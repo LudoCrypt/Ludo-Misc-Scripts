@@ -20,7 +20,11 @@
   margin-top: 15px;
 }
 
-#spritesheetType {
+#sortType {
+  display: inline;
+}
+
+#uploadType {
   display: inline;
 }
 
@@ -52,4 +56,9 @@ fieldset {
   width: 50%;
   height: 8rem;
   border: 4px solid #987885;
+}
+
+h6 {
+  margin-bottom: 0.5rem;
+
 }

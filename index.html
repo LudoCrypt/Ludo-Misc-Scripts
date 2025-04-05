@@ -31,8 +31,16 @@
       <!-- Alright this is where I started copy and pasting shit. -->
       <section>
         <h2>Upload</h2>
+        <div>
+          <p id="uploadType">Upload Type: </p>
+          <select name="uploadTypeBox" id="uploadTypeBox" class="formBox" required>
+            <option value="multiple">Single</option>
+            <option value="spritesheet">Multiple</option>
+          </select>
+          <h6>Single - Treats every image as a single sprite. <br>Multiple - Treats every image as an atlas of sprites; Shapes will be extracted from these.</h6>
+        </div>
         <label>Upload sprites: <input id="imageInput" type="file" accept="image/png" multiple></label>
-        <p>A spritesheet will be generated from your images.</p>
+        <p id="inputText">A spritesheet will be generated from your images.</p>
       </section>
 
       <section class="settings">
@@ -42,8 +50,20 @@
         </div>
         <div>
           <label for="autofit">Autofit: </label>
-          <input type="checkbox" id="autofit" name="autofit" value="autofit"><br>
+          <input type="checkbox" id="autofit" name="autofit" value="autofit" checked><br>
           <h6>Minify the bounds of each sprite before stitching.</h6>
+        </div>
+        <div>
+          <p id="sortType">Sort by: </p>
+          <select name="sortTypeBox" id="sortTypeBox" class="formBox" required>
+            <option value="na">None</option>
+            <option value="widtha">Width Ascending</option>
+            <option value="heighta">Height Ascending</option>
+            <option value="areaa">Aspect Ratio Ascending</option>
+            <option value="widthb">Width Descending</option>
+            <option value="heightb">Height Descending</option>
+            <option value="areab">Aspect Ratio Descending</option>
+          </select>
         </div>
         <fieldset title="Where to anchor the sprites.">
           <legend>Anchor</legend>
