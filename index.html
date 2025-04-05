@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css"></style>
+  <link rel="stylesheet" href="index.css"></style>
+  <script src="spritesheet.js"></script>
+</head>
+<body>
+  <div id="notBackground">
+    <table id="pages">
+      <tr>
+        <th id="firstpage">
+          <a href="index.html">Spritesheet</a>
+        </th>
+        <th id="secondpage">
+          <a href="pagetwo.html">Flipping</a>
+        </th>
+        <th id="thirdpage">
+          <a href="pagethree.html">Cropping</a>
+        </th>
+        <th id="fourthpage">
+          <a href="pagefour.html">Box to Voxel Struct</a>
+        </th>
+      </tr>
+    </table>
+    <div id="mainColumn">
+
+      <!-- Alright this is where I started copy and pasting shit. -->
+      <section>
+        <h2>Upload</h2>
+        <label>Upload sprites: <input id="imageInput" type="file" accept="image/png" multiple></label>
+        <p>A spritesheet will be generated from your images.</p>
+      </section>
+
+      <section class="settings">
+        <h2>Settings</h2>
+        <div>
+          <label>Vertical Offset: <input id="vOffset" type="number" min="-100" max="100" value="0"> pixels</label>
+        </div>
+        <div>
+          <p id="spritesheetType">Spritsheet Type: </p>
+          <select name="cost" id="cost" class="formBox" required disabled>
+            <option value="pipelike">Pipelike Material</option>
+            <option value="trashlike">Trashlike Material</option>
+            <option value="effect">Effect</option>
+          </select>
+          <h6>This will affect the text output.</h6>
+        </div>
+        <div>
+          <label for="autofit">Autofit: </label>
+          <input type="checkbox" id="autofit" name="autofit" value="autofit" disabled><br>
+          <h6>Currently does not do anything.</h6>
+        </div>
+        <fieldset title="Where to anchor the sprites.">
+          <legend>Anchor</legend>
+          <div id="anchorGrid">
+            <input type="radio" name="anchor" id="topLeft" data-anchor="0,0">
+            <input type="radio" name="anchor" id="top" data-anchor="0,1">
+            <input type="radio" name="anchor" id="topRight" data-anchor="0,2">
+            <input type="radio" name="anchor" id="left" data-anchor="1,0">
+            <input type="radio" name="anchor" id="center" data-anchor="1,1" checked>
+            <input type="radio" name="anchor" id="right" data-anchor="1,2">
+            <input type="radio" name="anchor" id="bottomLeft" data-anchor="2,0">
+            <input type="radio" name="anchor" id="bottom" data-anchor="2,1">
+            <input type="radio" name="anchor" id="bottomRight" data-anchor="2,2">
+          </div>
+        </fieldset>
+      </section>
+
+      <section>
+        <h2>Output</h2>
+        <input type="button" value="Download" onclick="combineBtn()">
+        <div id="outputBox">
+          <p id="output">#vars: 0, #pxlSz:point(0, 0)</p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <footer>
+    <a href="https://github.com/LudoCrypt">Source Code</a>
+    <p> | Created By: LudoCrypt & Hitherance</p>
+  </footer>
+</body>
+</html>

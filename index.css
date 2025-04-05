@@ -1,0 +1,55 @@
+#firstpage {
+  background-color: #886875;
+}
+
+#firstpage a {
+  color: #d0c8ca;
+}
+
+.settings > * {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#spritesheet {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  border: 1px solid #888;
+  background: #eee;
+  margin-top: 15px;
+}
+
+#spritesheetType {
+  display: inline;
+}
+
+fieldset {
+  border: 4px solid #987885;
+  width: 1%;
+  height: 10rem;
+}
+
+#anchorGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  width: 90px;
+  justify-content: start;
+  margin: 1rem 1.6rem 1rem 1rem;
+}
+
+#anchorGrid input {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#outputBox {
+  padding-left: 0.5rem;
+  color: #c6bebe;
+  background: #765663;
+  width: 50%;
+  height: 8rem;
+  border: 4px solid #987885;
+}
