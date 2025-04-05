@@ -41,10 +41,61 @@ function combineBtn() {
 		let promise = new Promise((resolve, reject) => {
 			reader.onload = (e) => {
 				img.onload = () => {
-					maxWidth = Math.max(maxWidth, img.width);
-					maxHeight = Math.max(maxHeight, img.height);
-					images.push(img);
-					resolve();
+					if (isAutofit()) {
+						let canvas = document.createElement('canvas');
+						canvas.width = img.width;
+						canvas.height = img.height;
+						let ctx = canvas.getContext('2d');
+						ctx.drawImage(img, 0, 0);
+						let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+						let data = imageData.data;
+
+						let minX = canvas.width, minY = canvas.height, maxX = 0, maxY = 0;
+						let found = false;
+
+						for (let y = 0; y < canvas.height; y++) {
+							for (let x = 0; x < canvas.width; x++) {
+								let idx = (y * canvas.width + x) * 4;
+								let r = data[idx], g = data[idx + 1], b = data[idx + 2], a = data[idx + 3];
+								let isWhite = r === 255 && g === 255 && b === 255;
+								if (a !== 0 && !isWhite) {
+									minX = Math.min(minX, x);
+									minY = Math.min(minY, y);
+									maxX = Math.max(maxX, x);
+									maxY = Math.max(maxY, y);
+									found = true;
+								}
+							}
+						}
+
+						if (found) {
+							let w = maxX - minX + 1;
+							let h = maxY - minY + 1;
+							let croppedCanvas = document.createElement('canvas');
+							croppedCanvas.width = w;
+							croppedCanvas.height = h;
+							let croppedCtx = croppedCanvas.getContext('2d');
+							croppedCtx.drawImage(canvas, minX, minY, w, h, 0, 0, w, h);
+							let croppedImg = new Image();
+							croppedImg.onload = () => {
+								maxWidth = Math.max(maxWidth, croppedImg.width);
+								maxHeight = Math.max(maxHeight, croppedImg.height);
+								images.push(croppedImg);
+								resolve();
+							};
+							croppedImg.src = croppedCanvas.toDataURL();
+						} else {
+							maxWidth = Math.max(maxWidth, img.width);
+							maxHeight = Math.max(maxHeight, img.height);
+							images.push(img);
+							resolve();
+						}
+					} else {
+						maxWidth = Math.max(maxWidth, img.width);
+						maxHeight = Math.max(maxHeight, img.height);
+						images.push(img);
+						resolve();
+					}
 				};
 				img.src = e.target.result;
 			};
@@ -52,6 +103,7 @@ function combineBtn() {
 		});
 		loadImagePromises.push(promise);
 	}
+
 
 	Promise.all(loadImagePromises).then(() => {
 		let totalWidth = maxWidth * images.length;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Spritesheet Creator</title>
   <link rel="stylesheet" href="styles.css"></style>
   <link rel="stylesheet" href="index.css"></style>
   <script src="spritesheet.js"></script>
@@ -13,7 +13,7 @@
     <table id="pages">
       <tr>
         <th id="firstpage">
-          <a href="index.html">Spritesheet</a>
+          <a href="index.html">Spritesheets</a>
         </th>
         <th id="secondpage">
           <a href="pagetwo.html">Flipping</a>
@@ -41,18 +41,9 @@
           <label>Vertical Offset: <input id="vOffset" type="number" min="-100" max="100" value="0"> pixels</label>
         </div>
         <div>
-          <p id="spritesheetType">Spritsheet Type: </p>
-          <select name="cost" id="cost" class="formBox" required disabled>
-            <option value="pipelike">Pipelike Material</option>
-            <option value="trashlike">Trashlike Material</option>
-            <option value="effect">Effect</option>
-          </select>
-          <h6>This will affect the text output.</h6>
-        </div>
-        <div>
           <label for="autofit">Autofit: </label>
-          <input type="checkbox" id="autofit" name="autofit" value="autofit" disabled><br>
-          <h6>Currently does not do anything.</h6>
+          <input type="checkbox" id="autofit" name="autofit" value="autofit"><br>
+          <h6>Minify the bounds of each sprite before stitching.</h6>
         </div>
         <fieldset title="Where to anchor the sprites.">
           <legend>Anchor</legend>
